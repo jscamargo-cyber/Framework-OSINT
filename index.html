@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brújula Digital: Colección de Herramientas OSINT</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #bb86fc;
+            font-size: 2.5em;
+        }
+        h2 {
+            color: #03dac6;
+            border-bottom: 2px solid #03dac6;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .category-box {
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+        h3 {
+            color: #cf6679;
+            margin-top: 0;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            display: block;
+            padding: 5px;
+            border-radius: 4px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        a:hover {
+            color: #121212;
+            background-color: #bb86fc;
+        }
+        a::before {
+            content: '🔗';
+            margin-right: 8px;
+        }
+        /* --- Estilos para el buscador avanzado --- */
+        .search-controls {
+            display: flex;
+            gap: 15px; /* Espacio entre el filtro y el buscador */
+            max-width: 800px;
+            margin: 0 auto 40px auto;
+            align-items: center;
+        }
+
+        #categoryFilter {
+            flex-shrink: 0; /* Evita que el dropdown se encoja */
+            padding: 12px;
+            background-color: #2c2c2c;
+            border: 1px solid #333;
+            border-radius: 8px;
+            color: #e0e0e0;
+            font-size: 1em;
+            cursor: pointer;
+        }
+
+        .search-container {
+            width: 100%; /* El formulario ocupa el espacio restante */
+            margin: 0;
+        }
+  </style>
+</head>
+<body>
+    <header>
+        <h1>Brújula Digital: Colección de Herramientas OSINT</h1>
+    </header>
+<div class="search-controls">
+    <select id="categoryFilter">
+        <option value="all">Todas las Categorías</option>
+        <option value="🌐 Frameworks, Blogs y Colecciones">Frameworks y Colecciones</option>
+        <option value="🤖 Inteligencia Artificial: Herramientas y Recursos">Inteligencia Artificial</option>
+        <option value="🔍 Motores de Búsqueda y Dorking">Búsqueda y Dorking</option>
+        <option value="👤 Inteligencia de Personas (SOCMINT)">SOCMINT</option>
+        <option value="💰 Finanzas, Criptomonedas y Negocios">Finanzas y Negocios</option>
+        <option value="🏛️ Registros Públicos y Bases de Datos">Registros Públicos</option>
+        <option value="🏢 Dominios, IP y Análisis Web">Dominios e IP</option>
+        <option value="🗺️ Geolocalización y Mapas (GEOINT)">GEOINT</option>
+        <option value="🖼️ Búsqueda y Análisis de Imágenes (IMINT)">IMINT</option>
+        <option value="🛡️ Ciberseguridad e Inteligencia de Amenazas">Ciberseguridad</option>
+        <option value="📦 Fugas de Datos y Darknet">Fugas y Darknet</option>
+        <option value="🛠️ Herramientas y Utilidades Generales">Herramientas Generales</option>
+        <option value="🔬 Research Tools">Research Tools</option>
+        <option value="🧪 Entornos de Práctica y Aprendizaje Interactivo">Entornos de Práctica</option>
+        <option value="📖 Recursos de Aprendizaje y Artículos">Recursos de Aprendizaje</option>
+        <option value="🔒 Comunicación y Almacenamiento Seguro">Comunicación Segura</option>
+        <option value="📂 Estudios de Casos e Investigaciones">Estudios de Casos</option>
+    </select>
+
+    <form class="search-container" onsubmit="return false;">
+        <input type="text" id="searchBox" placeholder="Buscar por título o etiqueta...">
+        <button type="submit" class="search-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        </button>
+    </form>
+</div>
+              <section class="main-section">     
+        <h2>🌐 Frameworks, Blogs y Colecciones</h2>
+        <div class="container">
+            <div class="category-box">
+                <h3>Frameworks y Metabuscadores</h3>
+                <ul>
+                   <li><a href="https://osintframework.com/" target="_blank" data-tags="framework, osint, coleccion, recursos, mapa mental">OSINT Framework</a></li>
+                    <li><a href="https://inteltechniques.com/" target="_blank">Intel Techniques</a></li>
+                    <li><a href="https://www.osintcombine.com/tools" target="_blank">OSINT Combine Tools</a></li>
+                    <li><a href="https://osint.sh/" target="_blank">OSINT.sh</a></li>
+                    <li><a href="https://gofindwho.com/" target="_blank">GoFindWho</a></li>
+                    <li><a href="https://recontool.org/" target="_blank">Recon Tool</a></li>
+                   <li><a href="http://rr.reuser.biz/" target="_blank">Reuser's Resources</a></li>
+                   <li><a href="http://rr.reuser.biz/" target="_blank">Reuser's Resources</a></li>
+                    <li><a href="https://www.avivadirectory.com/" target="_blank">Aviva Directory</a></li>
+                    <li><a href="https://www.osinttechniques.com/" target="_blank">OSINT Techniques (Homepage)</a></li>
+                    <li><a href="https://synapsint.com/index.php" target="_blank">SynapsInt</a></li>
+                </ul>
+            </div>
+            <div class="category-box">
+                <h3>Blogs y Noticias OSINT</h3>
+                <ul>
+                    <li><a href="https://osintcurio.us/" target="_blank">OSINT Curious</a></li>
+                    <li><a href="https://nixintel.info/" target="_blank">Nixintel</a></li>
+                    <li><a href="https://www.technisette.com/p/home" target="_blank">Technisette</a></li>
+                    <li><a href="https://keyfindings.blog/" target="_blank">Key Findings</a></li>
+                    <li><a href="https://medium.com/@sector035" target="_blank">Sector035</a></li>
+                    <li><a href="https://jakecreps.com/" target="_blank">Jake Creps</a></li>
+                    <li><a href="https://aboutdfir.com/" target="_blank">About DFIR</a></li>
+                    <li><a href="https://www.secjuice.com/social-media-intelligence-socmint/" target="_blank">Secjuice</a></li>
+                    <li><a href="https://bushidotoken.blogspot.com/2020/04/scout-sniper-grade-osint-website.html" target="_blank">Bushido Token Blog</a></li>
+                    <li><a href="https://dfir.blog/introducing-unfurl/" target="_blank">DFIR Blog</a></li>
+                    <li><a href="https://www.osintguru.com/" target="_blank">OSINTGURU</a></li>
+                </ul>
+            </div>
+            <div class="category-box">
+                <h3>Colecciones de Herramienta y Guías (start.me y otras)</h3>
+                <ul>
+                    <li><a href="https://start.me/p/gy1BgY/osint-tools-and-resources" target="_blank">OSINT Tools & Resources (start.me)</a></li>
+                    <li><a href="https://start.me/p/onqkGY/osint" target="_blank">OSINT Collection (start.me)</a></li>
+                    <li><a href="https://docs.google.com/document/d/1BfLPJpRtyq4RFtHJoNpvWQjmGnyVkfE2HYoICKOGguA/edit#" target="_blank">Bellingcat's Investigation Toolkit</a></li>
+                    <li><a href="https://docs.google.com/spreadsheets/d/1klugQqw6POlBtuzon8S0b18-gpsDwX-5OYRrB7TyNEw/edit#gid=0" target="_blank">CTI & OSINT Resources (Sheets)</a></li>
+                    <li><a href="https://start.me/p/DPYPMz/the-ultimate-osint-collection" target="_blank">The Ultimate OSINT Collection</a></li>
+                    <li><a href="https://github.com/jivoi/awesome-osint" target="_blank">Awesome OSINT (GitHub)</a></li>
+                    <li><a href="https://www.aware-online.com/en/osint-tools/" target="_blank">Aware Online Tools</a></li>
+                    <li><a href="https://www.osinttechniques.com/osint-tools.html" target="_blank">OSINT Techniques Tools</a></li>
+                    <li><a href="https://github.com/Ph055a/Domains_OSINT_Collection" target="_blank">GitHub: Domains OSINT Collection</a></li>
+                    <li><a href="https://github.com/HowToFind-bot/YaSeeker" target="_blank">GitHub: YaSeeker</a></li>
+                    <li><a href="https://www.osintdojo.com/resources/" target="_blank">OSINT Dojo Resources</a></li>
+                     <li><a href="https://start.me/p/zpkMMO/deep-fake-tools-detection" target="_blank">Deep Fake Tools (start.me)</a></li>
+					<li><a href="https://start.me/p/GEBalz/company-home-page" target="_blank">start.me: Company Home Page</a></li>
+                    <li><a href="https://start.me/p/7PP2lx/ocean-workspace" target="_blank">start.me: Ocean Workspace</a></li>
+                    <li><a href="https://start.me/p/5kkBqM/forest-workspace" target="_blank">start.me: Forest Workspace</a></li>
+                    <li><a href="https://start.me/p/Xyy6Ek/calm-workspace" target="_blank">start.me: Calm Workspace</a></li>
+                    <li><a href="https://start.me/p/GEgppm/ai-tools-and-resources" target="_blank">start.me: AI Tools & Resources</a></li>
+                    <li><a href="https://start.me/p/rxoGXx/edu-startpage" target="_blank">start.me: Edu Startpage</a></li>
+                    <li><a href="https://start.me/p/p61bgo/gaming" target="_blank">start.me: Gaming</a></li>
+                    <li><a href="https://start.me/p/9EmalX/hr-recruitment" target="_blank">start.me: HR & Recruitment</a></li>
+                    <li><a href="https://start.me/p/KMaagB/business-apps" target="_blank">start.me: Business Apps</a></li>
+                    <li><a href="https://start.me/p/PweyB2/lead-generation-collection" target="_blank">start.me: Lead Generation</a></li>
+                    <li><a href="https://start.me/p/lLzN12/class-home-page" target="_blank">start.me: Class Home Page</a></li>
+                    <li><a href="https://start.me/p/9EDkll/coronavirus-covid-19" target="_blank">start.me: Coronavirus COVID-19</a></li>
+                    <li><a href="https://start.me/p/4K2M9a/lets-plan-our-vacation-together" target="_blank">start.me: Vacation Planner</a></li>
+                    <li><a href="https://start.me/p/RMq8wD/rock-guitar-chords-tabs" target="_blank">start.me: Guitar Chords</a></li>
+                    <li><a href="https://start.me/p/wM20nX/blogging-platforms-tools" target="_blank">start.me: Blogging Platforms</a></li>
+                    <li><a href="https://start.me/p/DPDebo/new-employee-onboarding-page" target="_blank">start.me: New Employee Onboarding</a></li>
+                    <li><a href="https://start.me/p/xb2oKa/glen-s-rankins-photography-blog" target="_blank">start.me: Photography Blog</a></li>
+                    <li><a href="https://start.me/p/9oEQPl/non-profit" target="_blank">start.me: Non-Profit</a></li>
+                    <li><a href="https://start.me/p/7PPPvK/link-in-bio" target="_blank">start.me: Link in Bio</a></li>
+                    <li><a href="https://start.me/p/ogmPRY/heidi-matthews-portal" target="_blank">start.me: Heidi Matthews Portal</a></li>
+                    <li><a href="https://start.me/p/Kg4ynn/prioritize-like-a-pro-your-eisenhower-matrix-temp" target="_blank">start.me: Eisenhower Matrix</a></li>
+                    <li><a href="https://start.me/p/PL4lo9/gretchen-rubin-method-of-productivity" target="_blank">start.me: Gretchen Rubin Method</a></li>
+                    <li><a href="https://start.me/p/gGqRKp/real-estate-in-the-hague" target="_blank">start.me: Real Estate</a></li>
+                    <li><a href="https://start.me/p/GEBalz/company-home-page" target="_blank">start.me: Company Home Page</a></li>
+                    <li><a href="https://start.me/p/7PP2lx/ocean-workspace" target="_blank">start.me: Ocean Workspace</a></li>
+                    <li><a href="https://start.me/p/5kkBqM/forest-workspace" target="_blank">start.me: Forest Workspace</a></li>
+                   <li><a href="https://start.me/p/Xyy6Ek/calm-workspace" target="_blank">start.me: Calm Workspace</a></li>
+                    <li><a href="https://start.me/p/GEgppm/ai-tools-and-resources" target="_blank">start.me: AI Tools & Resources</a></li>
+                   <li><a href="https://start.me/p/rxoGXx/edu-startpage" target="_blank">start.me: Edu Startpage</a></li>
+                   <li><a href="https://start.me/p/p61bgo/gaming" target="_blank">start.me: Gaming</a></li>
+                  <li><a href="https://start.me/p/9EmalX/hr-recruitment" target="_blank">start.me: HR & Recruitment</a></li>
+                   <li><a href="https://start.me/p/KMaagB/business-apps" target="_blank">start.me: Business Apps</a></li>
+                 <li><a href="https://start.me/p/PweyB2/lead-generation-collection" target="_blank">start.me: Lead Generation</a></li>
+                 <li><a href="https://start.me/p/lLzN12/class-home-page" target="_blank">start.me: Class Home Page</a></li>
+                 <li><a href="https://start.me/p/9EDkll/coronavirus-covid-19" target="_blank">start.me: Coronavirus COVID-19</a></li>
+                  <li><a href="https://start.me/p/4K2M9a/lets-plan-our-vacation-together" target="_blank">start.me: Vacation Planner</a></li>
+                  <li><a href="https://start.me/p/RMq8wD/rock-guitar-chords-tabs" target="_blank">start.me: Guitar Chords</a></li>
+                 <li><a href="https://start.me/p/onqkGY/osint" target="_blank">start.me: OSINT</a></li>
+                  <li><a href="https://start.me/p/wM20nX/blogging-platforms-tools" target="_blank">start.me: Blogging Platforms</a></li>
+                 <li><a href="https://start.me/p/DPDebo/new-employee-onboarding-page" target="_blank">start.me: New Employee Onboarding</a></li>
+                  <li><a href="https://start.me/p/xb2oKa/glen-s-rankins-photography-blog" target="_blank">start.me: Photography Blog</a></li>
+                   <li><a href="https://start.me/p/zpkMMO/deep-fake-tools-detection" target="_blank">start.me: Deep Fake Tools</a></li>
+                 <li><a href="https://start.me/p/9oEQPl/non-profit" target="_blank">start.me: Non-Profit</a></li>
+                <li><a href="https://start.me/p/7PPPvK/link-in-bio" target="_blank">start.me: Link in Bio</a></li>
+                <li><a href="https://start.me/p/ogmPRY/heidi-matthews-portal" target="_blank">start.me: Heidi Matthews Portal</a></li>
+                <li><a href="https://start.me/p/Kg4ynn/prioritize-like-a-pro-your-eisenhower-matrix-temp" target="_blank">start.me: Eisenhower Matrix</a></li>
+                <li><a href="https://start.me/p/PL4lo9/gretchen-rubin-method-of-productivity" target="_blank">start.me: Gretchen Rubin Method</a></li>
+                <li><a href="https://start.me/p/gGqRKp/real-estate-in-the-hague" target="_blank">start.me: Real Estate</a></li>
+                <li><a href="https://start.me/p/aNkNx8/read-it-later-your-pocket-alternative" target="_blank">start.me: Read It Later</a></li>
+                <li><a href="https://start.me/pages/us/osint" target="_blank">start.me: OSINT (Official Page)</a></li>
+                <li><a href="https://start.me/p/1kxyw9/v3nari-bookmarks" target="_blank">start.me: V3nari Bookmarks</a></li>
+              <li><a href="https://start.me/p/b5Aow7/asint_collection" target="_blank">start.me: ASINT Collection</a></li>
+              <li><a href="https://start.me/pages/us/osint" target="_blank">start.me: OSINT (Official Page)</a></li>
+            <li><a href="https://start.me/p/1kxyw9/v3nari-bookmarks" target="_blank">start.me: V3nari Bookmarks</a></li>
+            <li><a href="https://start.me/p/b5Aow7/asint_collection" target="_blank">start.me: ASINT Collection</a></li>
+            <li><a href="https://start.me/p/m6XQ08/osint" target="_blank">start.me: OSINT (m6XQ08)</a></li>
+              <li><a href="https://start.me/p/m6XQ08/osint" target="_blank">start.me: OSINT (m6XQ08)</a></li>
+                    <li><a href="https://start.me/p/aNkNx8/read-it-later-your-pocket-alternative" target="_blank">start.me: Read It Later</a></li>
+                    <li><a href="https://start.me/pages/" target="_blank">start.me Pages</a></li>
+					</ul>
+            </div>
+             <div class="category-box">
+                <h3>Foros de Ciberseguridad</h3>
+                <ul>
+                    <li><a href="https://4plebs.org/" target="_blank">4plebs</a></li>
+                    <li><a href="https://www.nulled.to/" target="_blank">Nulled.to</a></li>
+                    <li><a href="https://cracked.to/" target="_blank">Cracked.to</a></li>
+                    <li><a href="https://raidforums.com/index.php" target="_blank">RaidForums (Archivo)</a></li>
+                    <li><a href="https://forum.exploit.in/" target="_blank">Exploit.in Forum</a></li>
+                    <li><a href="https://github.com/teixeira0xfffff/Cybercrime-Forums" target="_blank">Cybercrime Forums (GitHub List)</a></li>
+                    <li><a href="http://link-king.org/" target="_blank">Link-King</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <section class="main-section">
+        <h2>🤖 Inteligencia Artificial: Herramientas y Recursos</h2>
+        <div class="container">
+            <div class="category-box">
+                <h3>Noticias y Plataformas de IA</h3>
+                <ul>
+                    <li><a href="https://mindstream.news/" target="_blank">Mindstream</a></li>
+                    <li><a href="https://refind.com/" target="_blank">Refind</a></li>
+                    <li><a href="https://www.theinformation.com/" target="_blank">The Information</a></li>
+                    <li><a href="https://www.therundown.ai/" target="_blank">The Rundown AI</a></li>
+                </ul>
+            </div>
+            <div class="category-box">
+                <h3>Chatbots y GPTs Personalizados</h3>
+                <ul>
+                    <li><a href="https://beta.character.ai/" target="_blank">Character.ai</a></li>
+                    <li><a href="https://customgpt.ai/" target="_blank">CustomGPT</a></li>
+                    <li><a href="https://chat.dante-ai.com/sign-in" target="_blank">Dante AI</a></li>
+                    <li><a href="https://www.databerry.ai/" target="_blank">Chatbot de Datos Personalizado</a></li>
+                    <li><a href="https://insightbase.ai/" target="_blank">InsightBase</a></li>
+                    <li><a href="https://app.getmerlin.in/" target="_blank">Merlin</a></li>
+                    <li><a href="https://orimon.ai/" target="_blank">Orimon</a></li>
+                    <li><a href="https://osher.ai/" target="_blank">Osher.ai</a></li>
+                    <li><a href="https://sitegpt.ai/" target="_blank">SiteGPT</a></li>
+                    <li><a href="https://www.tidio.com/lyro/" target="_blank">Tidio Lyro</a></li>
+                    <li><a href="https://www.typingmind.com/" target="_blank">TypingMind</a></li>
+                    <li><a href="https://www.xmagic.ai/" target="_blank">XMagic.ai</a></li>
+                </ul>
+            </div>
+            <div class="category-box">
+                <h3>Generación de Imagen y Arte</h3>
+                <ul>
+                    <li><a href="https://firefly.adobe.com/" target="_blank">Adobe Firefly</a></li>
+                    <li><a href="https://www.midjourney.com/home/" target="_blank">Midjourney</a></li>
+                    <li><a href="https://lexica.art/" target="_blank">Lexica</a></li>
+                    <li><a href="https://playgroundai.com/" target="_blank">Playground AI</a></li>
+                    <li><a href="https://www.craiyon.com/" target="_blank">Craiyon</a></li>
+                    <li><a href="https://www.logoai.com/" target="_blank">LogoAI</a></li>
+                    <li><a href="https://art.aiseo.ai/" target="_blank">AISEO Art</a></li>
+                    <li><a href="https://app.artflow.ai/" target="_blank">Artflow.ai</a></li>
+                    <li><a href="https://artsmart.ai/" target="_blank">ArtSmart.ai</a></li>
+                    <li><a href="https://www.blockadelabs.com/" target="_blank">Blockade Labs</a></li>
+                    <li><a href="https://deepai.org/machine-learning-model/text2img" target="_blank">DeepAI</a></li>
+                    <li><a href="https://hotpot.ai/art-generator" target="_blank">Hotpot.ai</a></li>
+                    <li><a href="https://lumalabs.ai/" target="_blank">Luma Labs</a></li>
+                    <li><a href="https://magicstudio.com/photobooth" target="_blank">Magic Studio Photobooth</a></li>
+                    <li><a href="https://picsart.com/ai-image-generator" target="_blank">Picsart AI</a></li>
+                    <li><a href="https://writesonic.com/photosonic-ai-art-generator" target="_blank">Photosonic</a></li>
+                </ul>
+            </div>
+            <div class="category-box">
+                <h3>Herramientas de Audio y Video</h3>
+                <ul>
+                    <li><a href="https://podcastle.ai/" target="_blank">Podcastle</a></li>
+                    <li><a href="https://chopshopai.com/" target="_blank">ChopShop AI</a></li>
+                    <li><a href="https://cleanvoice.ai/" target="_blank">Cleanvoice AI</a></li>
+                    <li><a href="https://www.deciphr.ai/" target="_blank">Deciphr</a></li>
+                    <li><a href="https://hello.fathom.fm/" target="_blank">Fathom</a></li>
+                    <li><a href="https://hello.podium.page/" target="_blank">Podium</a></li>
+                    <li><a href="https://podsqueeze.com/" target="_blank">PodSqueeze</a></li>
+                </ul>
+            </div>
+            <div class="category-box">
+                <h3>Marketing y SEO con IA</h3>
+                <ul>
+                    <li><a href="https://www.aiprm.com/" target="_blank">AIPRM</a></li>
+                    <li><a href="https://surferseo.com/" target="_blank">SurferSEO</a></li>
+                    <li><a href="https://www.rankiq.com/" target="_blank">RankIQ</a></li>
+                    <li><a href="https://inlinks.com/" target="_blank">InLinks</a></li>
+                    <li><a href="https://www.marketmuse.com/" target="_blank">MarketMuse</a></li>
+                    <li><a href="https://seovendor.co/seo-gpt/" target="_blank">SEO GPT</a></li>
+                    <li><a href="https://seo.app/" target="_blank">SEO.app</a></li>
+                    <li><a href="https://www.seopress.org/features/openai" target="_blank">SEOPress</a></li>
+                    <li><a href="https://plugin.squirrly.co/" target="_blank">Squirrly SEO</a></li>
+                    <li><a href="https://www.adcreative.ai/" target="_blank">AdCreative.ai</a></li>
+                    <li><a href="https://www.hotreachai.com/" target="_blank">Hot Reach AI</a></li>
+                    <li><a href="https://looka.com/" target="_blank">Looka</a></li>
+                    <li><a href="https://windsor.ai/" target="_blank">Windsor.ai</a></li>
+                </ul>
+            </div>
+            <div class="category-box">
+                <h3>Detectores de Contenido IA</h3>
+                <ul>
+                    <li><a href="https://gptzero.me/" target="_blank">GPTZero</a></li>
+                    <li><a href="https://app.originality.ai/" target="_blank">Originality.ai</a></li>
+                    <li><a href="https://gowinston.ai/" target="_blank">Winston AI</a></li>
+                    <li><a href="https://contentatscale.ai/" target="_blank">Content at Scale</a></li>
+                    <li><a href="https://gptkit.ai/" target="_blank">GPTKit</a></li>
+                    <li><a href="https://plagiashield.com/" target="_blank">PlagiaShield</a></li>
+                </ul>
+            </div>
+            <div class="category-box">
+                <h3>Productividad y Automatización</h3>
+                <ul>
+                    <li><a href="https://www.bardeen.ai/" target="_blank">Bardeen</a></li>
+                    <li><a href="https://www.browse.ai/" target="_blank">Browse AI</a></li>
+                    <li><a href="https://hexomatic.com/" target="_blank">Hexomatic</a></li>
+                    <li><a href="https://clickup.com/" target="_blank">ClickUp</a></li>
+                    <li><a href="https://www.notion.so/" target="_blank">Notion</a></li>
+                    <li><a href="https://coda.io/" target="_blank">Coda</a></li>
+                    <li><a href="https://www.taskade.com/" target="_blank">Taskade</a></li>
+                    <li><a href="https://todoist.com/integrations/apps/ai-assistant" target="_blank">Todoist AI Assistant</a></li>
+                    <li><a href="https://app.grammarly.com/" target="_blank">Grammarly</a></li>
+                    <li><a href="https://fireflies.ai/" target="_blank">Fireflies.ai</a></li>
+                    <li><a href="https://formulabot.com/" target="_blank">Formula Bot</a></li>
+                    <li><a href="https://www.sheetai.app/" target="_blank">SheetAI.app</a></li>
+                    <li><a href="https://www.beautiful.ai/" target="_blank">Beautiful.ai</a></li>
+                    <li><a href="https://www.decktopus.com/" target="_blank">Decktopus</a></li>
+                    <li><a href="https://pdf.ai/" target="_blank">PDF.ai</a></li>
+                    <li><a href="https://www.sanebox.com/" target="_blank">SaneBox</a></li>
+                </ul>
+            </div>
+            <div class="category-box">
+                <h3>Constructores de Sitios Web IA</h3>
+                <ul>
+                    <li><a href="https://10web.io/" target="_blank">10Web</a></li>
+                    <li><a href="https://durable.co/ai-website-builder" target="_blank">Durable</a></li>
+                    <li><a href="https://elementor.com/pages/wordpress" target="_blank">Elementor</a></li>
+                    <li><a href="https://www.framer.com/" target="_blank">Framer</a></li>
+                    <li><a href="https://zyro.com/" target="_blank">Zyro</a></li>
+                </ul>
+            </div>
+            <div class="category-box">
+                <h3>Educación y Aprendizaje de Idiomas</h3>
+                <ul>
+                    <li><a href="https://quizgecko.com/" target="_blank">Quizgecko</a></li>
+                    <li><a href="https://soofy.io/" target="_blank">Soofy</a></li>
+                    <li><a href="https://talkpal.ai/" target="_blank">TalkPal</a></li>
+                    <li><a href="https://teachermatic.com/" target="_blank">Teachermatic</a></li>
+                    <li><a href="https://courseai.com/" target="_blank">CourseAI</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="main-section">
+        <h2>🔍 Motores de Búsqueda y Dorking</h2>
+        <div class="container"><div class="category-box"><h3>Buscadores Generales y Privados</h3><ul><li><a href="https://www.google.com/" target="_blank">Google</a></li><li><a href="https://yandex.com/" target="_blank">Yandex</a></li><li><a href="https://www.bing.com/" target="_blank">Bing</a></li><li><a href="https://duckduckgo.com/" target="_blank">DuckDuckGo (Privado)</a></li><li><a href="https://www.mojeek.com/" target="_blank">Mojeek (Sin rastreo)</a></li><li><a href="https://swisscows.com/" target="_blank">Swisscows (Privado)</a></li><li><a href="https://metager.org/" target="_blank">Metager</a></li><li><a href="https://yacy.net/" target="_blank">Yacy (P2P)</a></li><li><a href="http://advangle.com/" target="_blank">Advangle</a></li>
+                    <li><a href="https://answerthepublic.com/" target="_blank">AnswerThePublic</a></li>
+                    <li><a href="https://www.google.com/advanced_search" target="_blank">Google Advanced Search</a></li>
+                    <li><a href="http://www.iseek.com/iseek/home.page" target="_blank">iSeek</a></li>
+                    <li><a href="https://www.izito.com/" target="_blank">izito</a></li>
+                    <li><a href="https://www.startpage.com/" target="_blank">Startpage</a></li>
+                    <li><a href="https://swisscows.ch/" target="_blank">Swisscows.ch</a></li>
+                    <li><a href="https://search.yahoo.com/web/advanced" target="_blank">Yahoo Advanced Search</a></li>
+                    <li><a href="https://www.yippy.com/" target="_blank">Yippy</a></li></ul></div><div class="category-box"><h3>Buscadores Especializados y Contenido</h3><ul><li><a href="https://bt4g.org/" target="_blank">BT4G (Torrents)</a></li><li><a href="https://boardreader.com/" target="_blank">Boardreader (Forums)</a></li><li><a href="https://camas.github.io/reddit-search/" target="_blank">Reddit Search</a></li><li><a href="https://www.pdfsearch.io/" target="_blank">PDF Search</a></li><li><a href="https://searchcode.com/" target="_blank">Searchcode (Código Fuente)</a></li><li><a href="https://publicwww.com/" target="_blank">PublicWWW (Código Fuente)</a></li></ul></div><div class="category-box"><h3>Dorking y Búsqueda Avanzada</h3><ul><li><a href="https://www.exploit-db.com/google-hacking-database" target="_blank">Google Hacking Database</a></li><li><a href="https://geekwire.eu/ghdb/" target="_blank">GHDB (GeekWire)</a></li><li><a href="https://ahrefs.com/blog/google-advanced-search-operators/" target="_blank">Guía de Operadores de Google</a></li><li><a href="https://github.com/GONZOsint/gitrecon" target="_blank">GitHub: GitRecon</a></li><li><a href="https://qresear.ch/" target="_blank">QResear.ch</a></li><li><a href="https://blackhattrick.blogspot.com/2018/03/lfi-dork-list.html" target="_blank">LFI Dork List</a></li><li><a href="https://cse.google.com/cse?cx=003248445720253387346:turlh5vi4xc" target="_blank">CSE Google (Exploits)</a></li></ul></div><div class="category-box"><h3>Traducción</h3><ul><li><a href="https://translate.google.com/" target="_blank">Google Translate</a></li><li><a href="https://www.deepl.com/translator" target="_blank">DeepL Translator</a></li><li><a href="https://translate.yandex.com/" target="_blank">Yandex Translate</a></li><li><a href="https://www.bing.com/translator" target="_blank">Bing Translator</a></li></ul></div></div>
+    
+
+	</section>
+
+    <section class="main-section">
+        <h2>👤 Inteligencia de Personas (SOCMINT)</h2>
+        <div class="container"><div class="category-box"><h3>Búsqueda de Nombres de Usuario</h3><ul><li><a href="https://namechk.com/" target="_blank">Namechk</a></li><li><a href="https://checkusernames.com/" target="_blank">Check Usernames</a></li><li><a href="https://whatsmyname.app/" target="_blank">WhatsMyName.app</a></li><li><a href="https://knowem.com/" target="_blank">KnowEm</a></li><li><a href="https://github.com/qeeqbox/social-analyzer" target="_blank">Social Analyzer (GitHub)</a></li><li><a href="https://github.com/soxoj/maigret" target="_blank">Maigret (GitHub)</a></li></ul></div><div class="category-box"><h3>Investigación de Correo Electrónico</h3><ul><li><a href="https://hunter.io/search" target="_blank">Hunter.io</a></li><li><a href="https://tools.epieos.com/email.php" target="_blank">Epieos Email Tools</a></li><li><a href="https://emailrep.io/" target="_blank">EmailRep (Reputación)</a></li><li><a href="https://dehashed.com/" target="_blank">Dehashed (Fugas)</a></li><li><a href="https://www.emailsherlock.com/" target="_blank">Email Sherlock</a></li><li><a href="https://pypi.org/project/h8mail/" target="_blank">h8mail (PyPI)</a></li><li><a href="https://rocketreach.co/" target="_blank">RocketReach</a></li><li><a href="https://cq21.uk/email-to-username/" target="_blank">Email to Username</a></li><li><a href="https://www.verifyemailaddress.org/" target="_blank">Email Verifier</a></li><li><a href="https://leakcheck.io/" target="_blank">LeakCheck</a></li><li><a href="https://dkimvalidator.com/" target="_blank">DKIM Validator</a></li><li><a href="https://33mail.com/" target="_blank">33Mail (Email anónimo)</a></li><li><a href="https://www.melissa.com/v2/lookups/emailcheck/email/" target="_blank">Melissa Email Check</a></li>
+                    <li><a href="https://www.email-validator.net/" target="_blank">Email-Validator</a></li>
+                    <li><a href="http://www.reversegenie.com/email.php" target="_blank">Reverse Genie Email</a></li>
+                    <li><a href="https://maildb.io/" target="_blank">MailDB</a></li>
+                    <li><a href="https://mailshunt.com/" target="_blank">Mailshunt</a></li>
+                    <li><a href="https://mailtester.com/testmail.php" target="_blank">MailTester</a></li>
+                    <li><a href="http://www.skymem.info/" target="_blank">Skymem</a></li>
+                    <li><a href="https://verify-email.org/" target="_blank">Verify Email</a></li>
+                    <li><a href="https://www.voilanorbert.com/" target="_blank">Voila Norbert</a></li></ul></div><div class="category-box"><h3>Investigación de Números de Teléfono</h3><ul><li><a href="https://phonebook.cz/" target="_blank">Phonebook.cz</a></li><li><a href="https://github.com/sundowndev/PhoneInfoga" target="_blank">PhoneInfoga (GitHub)</a></li><li><a href="https://demo.phoneinfoga.crvx.fr/#/" target="_blank">PhoneInfoga (Demo)</a></li><li><a href="https://github.com/Chr0m0s0m3s/DeadTrap" target="_blank">DeadTrap (GitHub)</a></li><li><a href="https://tools.epieos.com/phone.php" target="_blank">Epieos Phone Tools</a></li><li><a href="https://www.zlookup.com/" target="_blank">Zlookup</a></li><li><a href="https://www.numlookup.com/" target="_blank">Numlookup</a></li><li><a href="https://phonesear.ch/" target="_blank">PhoneSear.ch</a></li><li><a href="https://www.neutrinoapi.com/account/main/" target="_blank">Neutrino API</a></li><li><a href="https://www.everyoneapi.com/" target="_blank">EveryoneAPI</a></li><li><a href="https://www.martinvigo.com/tools/phonerator/" target="_blank">Phonerator</a></li></ul></div><div class="category-box"><h3>Servicios de SMS y Verificación</h3><ul><li><a href="http://receive-sms-online.com/" target="_blank">Receive SMS Online</a></li><li><a href="https://temp-sms.org/" target="_blank">Temp SMS</a></li><li><a href="https://verifywithsms.com/" target="_blank">Verify With SMS</a></li><li><a href="https://www.textverified.com/" target="_blank">TextVerified</a></li><li><a href="https://www.juicysms.com/" target="_blank">JuicySMS</a></li><li><a href="https://smsprivacy.org/" target="_blank">SMS Privacy</a></li><li><a href="https://pastebin.com/phdkJg4G" target="_blank">Disposable SMS (Lista)</a></li></ul></div><div class="category-box"><h3>Servicios de Número Virtual</h3><ul><li><a href="https://www.sideline.com/" target="_blank">Sideline</a></li><li><a href="https://iplum.com/" target="_blank">iPlum</a></li><li><a href="https://crypton.sh/" target="_blank">Crypton.sh</a></li><li><a href="https://www.virtualpostmail.com/" target="_blank">VirtualPostMail</a></li><li><a href="https://usshortcodedirectory.com/" target="_blank">US Short Code Directory</a></li><li><a href="https://trainfo.iconectiv.com/related-sites" target="_blank">TRA Related Sites</a></li></ul></div><div class="category-box"><h3>Plataformas de Redes Sociales</h3><ul><li><a href="https://www.social-searcher.com/" target="_blank">Social Searcher</a></li><li><a href="https://www.mtg-bi.com/" target="_blank">Social Links Tool</a></li><li><a href="https://www.meltwater.com/en" target="_blank">Meltwater</a></li><li><a href="https://findmyfbid.com/" title="Find my Facebook ID" target="_blank">Find my Facebook ID</a></li><li><a href="https://github.com/sowdust/ffff" target="_blank">FFFF (Find Facebook Friends)</a></li><li><a href="https://github.com/megadose/facebook_totem" target="_blank">Facebook Totem</a></li><li><a href="https://commentpicker.com/" target="_blank">Comment Picker</a></li><li><a href="https://foller.me/" target="_blank">Foller.me (Twitter)</a></li><li><a href="https://accountanalysis.app/" target="_blank">Account Analysis (Twitter)</a></li><li><a href="https://tweeterid.com/" title="TweeterID - Twitter ID converter" target="_blank">TweeterID</a></li><li><a href="https://github.com/Datalux/Osintgram" target="_blank">Osintgram (Instagram)</a></li><li><a href="https://www.modash.io/instagram-email-finder" target="_blank">Modash IG Email Finder</a></li><li><a href="https://vidnice.com/" title="TikTok Web Viewer Online" target="_blank">VidNice (TikTok)</a></li><li><a href="https://github.com/mxrch/ghunt" target="_blank">GHunt (Google Accounts)</a></li><li><a href="https://discord.id/" title="Discord Lookup" target="_blank">Discord ID Lookup</a></li></ul></div><div class="category-box"><h3>Inteligencia de Aplicaciones Móviles</h3><ul><li><a href="https://www.smat-app.com/timeline?searchTerm=election" target="_blank">SMAT (Análisis de Redes)</a></li><li><a href="https://www.applyzer.com/" target="_blank">Applyzer</a></li><li><a href="https://www.appannie.com/en/apps/ios/top/" target="_blank">App Annie (Data.ai)</a></li>
+		          </ul>
+                </div>   
+                  <div class="category-box">
+                <h3>Location to track people</h3>
+                <ul>
+                    <li><a href="http://www.familytreenow.com/" target="_blank">FamilyTreeNow</a></li>
+                    <li><a href="https://www.peekyou.com/" target="_blank">PeekYou</a></li>
+                    <li><a href="https://pipl.com/" target="_blank">Pipl</a></li>
+                    <li><a href="https://radaris.com/" target="_blank">Radaris</a></li>
+                    <li><a href="https://www.spokeo.com/" target="_blank">Spokeo</a></li>
+                    <li><a href="https://thatsthem.com/reverse-email-lookup" target="_blank">ThatsThem</a></li>
+                    <li><a href="https://www.ussearch.com/" target="_blank">US Search</a></li>
+                    <li><a href="https://webmii.com/" target="_blank">Webmii</a></li>
+                    <li><a href="https://www.zabasearch.com/" target="_blank">Zabasearch</a></li>
+                </ul>
+            </div>
+    </section>
+
+     <section class="main-section">
+        <h2>💰 Finanzas, Criptomonedas y Negocios</h2>
+        <div class="container"><div class="category-box"><h3>Inteligencia Corporativa y de Negocios</h3><ul><li><a href="https://opencorporates.com/" target="_blank">OpenCorporates</a></li><li><a href="https://www.trademarkia.com/" target="_blank">Trademarkia</a></li><li><a href="https://www.corporationwiki.com/" target="_blank">CorporationWiki</a></li><li><a href="https://theorg.com/" target="_blank">The Org</a></li><li><a href="https://b2bhint.com/en" target="_blank">B2BHint</a></li><li><a href="https://index.co/" target="_blank">Index.co</a></li><li><a href="https://dashboard.fullcontact.com/login" target="_blank">FullContact</a></li><li><a href="https://maltego.peoplemon.com/" target="_blank">PeopleMon (Maltego)</a></li><li><a href="https://www.c-hound.ai/" target="_blank">C-Hound AI</a></li></ul></div><div class="category-box"><h3>Criptomonedas y Blockchain</h3><ul><li><a href="https://www.bitcoinabuse.com/" target="_blank">Bitcoin Abuse Database</a></li><li><a href="https://checkbitcoinaddress.com/" target="_blank">Check Bitcoin Address</a></li><li><a href="https://www.zoominfo.com/people_directory/professional_profile/A-0-0" target="_blank">ZoomInfo</a></li></ul></div></div>
+    </section>
+
+    <section class="main-section">
+        <h2>🏛️ Registros Públicos y Bases de Datos</h2>
+        <div class="container"><div class="category-box"><h3>Registros Legales y Gubernamentales</h3><ul><li><a href="https://www.courtlistener.com/" target="_blank">CourtListener (Documentos Legales)</a></li><li><a href="https://www.judyrecords.com/" target="_blank">JudyRecords (Registros Judiciales)</a></li><li><a href="https://sanctionsexplorer.org/" target="_blank">Sanctions Explorer (Sanciones)</a></li><li><a href="https://www.tendersinfo.com/" target="_blank">Tendersinfo (Licitaciones)</a></li><li><a href="https://voterrecords.com/" target="_blank">VoterRecords (Votantes)</a></li><li><a href="https://donor.watch/" target="_blank">Donor Watch (Donantes Políticos)</a></li><li><a href="https://www.countyoffice.org/" target="_blank">County Office (Oficinas Públicas)</a></li><li><a href="https://www.lumendatabase.org/" target="_blank">Lumen Database (Censura)</a></li><li><a href="https://lex.be/" target="_blank">Lex.be</a></li><li><a href="https://casetext.com/case/bright-imperial-ltd-v-rt-mediasolutions" target="_blank">CaseText</a></li><li><a href="https://datacatalog.worldbank.org/" target="_blank">World Bank Data Catalog</a></li>
+                    <li><a href="https://www.melissa.com/v2/lookups/deathcheck" target="_blank">Melissa Death Check</a></li>
+                    <li><a href="https://www.followthemoney.org/" target="_blank">FollowTheMoney.org</a></li>
+                    <li><a href="http://www.opensecrets.org/" target="_blank">OpenSecrets.org</a></li>
+                    <li><a href="http://www.politicalmoneyline.com/" target="_blank">Political MoneyLine</a></li>
+                    <li><a href="https://www.brbpub.com/" target="_blank">BRB Publications</a></li>
+                    <li><a href="https://www.kvk.nl/" target="_blank">KVK (Países Bajos)</a></li>
+                    <li><a href="https://www.delpher.nl/nl/kranten" target="_blank">Delpher (Periódicos Históricos)</a></li>    </ul>
+                </div>
+                <div class="category-box">
+                    <h3>Registros Comerciales y Personales</h3>
+                    <ul>                       
+                    <li><a href="https://www.owens.com/" target="_blank">Owens OnLine (Reportes de Crédito)</a></li>
+                    <li><a href="https://www.wipo.int/amc/en/domains/" target="_blank">WIPO (Dominios)</a></li>
+                    <li><a href="https://www.udrpsearch.com/" target="_blank">UDRP Search (Disputas de Dominios)</a></li>
+                    <li><a href="https://www.dndisputes.com/" target="_blank">DN Disputes</a></li>
+                    <li><a href="https://www3.wipo.int/madrid/monitor/en/" target="_blank">WIPO Madrid Monitor (Marcas)</a></li>
+                    <li><a href="https://registryfinder.com/" target="_blank">Registry Finder (Registros de Regalos)</a></li>
+                </ul>               
+                </div>
+                <div class="category-box">
+                    <h3>Datos, Estadísticas y Fact-Checking</h3>
+                    <ul>
+                    <li><a href="https://openresearch-repository.anu.edu.au/" target="_blank">Open Research Repository</a></li>
+                    <li><a href="https://link.springer.com/" target="_blank">Springer Research</a></li>
+                    <li><a href="https://b-ok.cc/" target="_blank">B-OK Electronic Library</a></li>
+                    <li><a href="https://datareportal.com/" target="_blank">DataReportal (Insights Digitales)</a></li>
+                    <li><a href="https://www.politifact.com/" target="_blank">PolitiFact (Verificación de Hechos)</a></li>
+                </ul> 
+            </div>          
+	<div class="category-box">
+                <h3>Perfiles e Información de Países</h3>
+                <ul>
+                    <li><a href="https://www.cia.gov/the-world-factbook/" target="_blank">CIA World Factbook</a></li>
+                    <li><a href="https://data.worldbank.org/country" target="_blank">World Bank Country Data</a></li>
+                    <li><a href="http://news.bbc.co.uk/2/hi/country_profiles/default.stm" target="_blank">BBC Country Profiles</a></li>
+                    <li><a href="https://www.who.int/countries/" target="_blank">WHO Countries</a></li>
+                    <li><a href="http://www.fao.org/countryprofiles/en" target="_blank">FAO Country Profiles</a></li>
+                    <li><a href="https://globaledge.msu.edu/" target="_blank">GlobalEdge</a></li>
+                    <li><a href="https://www.gov.uk/government/collections/country-policy-and-information-notes" target="_blank">UK Gov Country Notes</a></li>
+                    <li><a href="https://www.international.gc.ca/world-monde/country-pays/index.aspx?lang=eng" target="_blank">Canada World Information</a></li>
+                   <li><a href="https://www.international.gc.ca/cil-cai/country_insights-apercus_pays/countryinsights-apercuspays.aspx?lang=eng" target="_blank">Canada Country Insights</a></li>
+                    <li><a href="https://www.refworld.org/type,COUNTRYPROF,,,,,0.html" target="_blank">Refworld Country Profiles</a></li>
+                    <li><a href="https://www.routledge.com/" target="_blank">Routledge Handbooks</a></li>
+                    <li><a href="https://www.govdata.de/" target="_blank">GovData (Alemania)</a></li>
+                </ul>
+              </div>
+        </div>
+    </section>
+
+    <section class="main-section">
+        <h2>🏢 Dominios, IP y Análisis Web</h2>
+        <div class="container"><div class="category-box"><h3>Análisis de Dominios e IP</h3><ul><li><a href="https://viewdns.info/" target="_blank">ViewDNS</a></li><li><a href="https://dnsdumpster.com/" target="_blank">DNSdumpster</a></li><li><a href="https://securitytrails.com/" target="_blank">SecurityTrails</a></li><li><a href="https://www.whoxy.com/" target="_blank">Whoxy</a></li><li><a href="https://myip.ms/" target="_blank">MyIP.ms</a></li><li><a href="https://centralops.net/co/" target="_blank">Central Ops</a></li><li><a href="https://domainbigdata.com/" target="_blank">Domain Big Data</a></li><li><a href="https://sonar.omnisint.io/" target="_blank">Project Crobat (Subdominios)</a></li><li><a href="https://spyse.com/" target="_blank">Spyse</a></li><li><a href="https://riddler.io/" target="_blank">Riddler.io</a></li><li><a href="https://www.bulkseotools.com/bulk-whois-lookup.php" target="_blank">Bulk Whois Lookup</a></li><li><a href="http://analyzeid.com/" target="_blank">Analyze ID</a></li>
+                    <li><a href="http://dailychanges.domaintools.com/" target="_blank">DomainTools Daily Changes</a></li>
+                    <li><a href="http://www.domaincrawler.com/" target="_blank">Domain Crawler</a></li>
+                    <li><a href="https://www.domainiq.com/" target="_blank">DomainIQ</a></li>
+                    <li><a href="https://www.easywhois.com/" target="_blank">EasyWhois</a></li>
+                    <li><a href="https://website.informer.com/" target="_blank">Website Informer</a></li>
+                    <li><a href="https://who.is/" target="_blank">Who.is</a></li></ul></div><div class="category-box"><h3>Herramientas de Red y DNS</h3><ul><li><a href="https://dnstwister.report/" target="_blank">DNSTwister</a></li><li><a href="https://findsubdomains.com/" target="_blank">Find Subdomains</a></li><li><a href="https://dnslytics.com/" target="_blank">DNSlytics</a></li><li><a href="https://securitytrails.com/dns-trails" target="_blank">SecurityTrails DNS Trails</a></li><li><a href="https://reputation.team-cymru.com/" target="_blank">Team Cymru Reputation</a></li><li><a href="https://www.reversewhois.io/" target="_blank">Reverse Whois</a></li><li><a href="https://dnpedia.com/" target="_blank">DNPedia</a></li><li><a href="https://bgp.he.net/" target="_blank">BGP HE.net</a></li><li><a href="https://dns.watch/" target="_blank">DNS.Watch</a></li><li><a href="https://visualping.io/" target="_blank">VisualPing</a></li><li><a href="https://whoisology.com/" target="_blank">Whoisology</a></li><li><a href="https://network-tools.com/" target="_blank">Network-Tools</a></li><li><a href="https://ipinfo.io/" target="_blank">IPinfo.io</a></li><li><a href="https://networksdb.io/" target="_blank">NetworksDB</a></li><li><a href="https://www.dan.me.uk/" target="_blank">Dan's Tools</a></li><li><a href="https://www.bigdatacloud.com/" target="_blank">BigDataCloud</a></li><li><a href="https://dnsmap.io/" target="_blank">DNS Map</a></li><li><a href="https://hetrixtools.com/" target="_blank">HetrixTools</a></li></ul></div><div class="category-box"><h3>Buscadores de Infraestructura</h3><ul><li><a href="https://www.shodan.io/" target="_blank">Shodan</a></li><li><a href="https://censys.io/" target="_blank">Censys</a></li><li><a href="https://fofa.so/" target="_blank">FOFA</a></li><li><a href="https://www.zoomeye.org/" target="_blank">ZoomEye</a></li><li><a href="https://onyphe.io/" target="_blank">Onyphe</a></li><li><a href="https://urlscan.io/" target="_blank">URLScan.io</a></li><li><a href="https://app.binaryedge.io/login" target="_blank">BinaryEdge</a></li><li><a href="https://www.thingful.net/" target="_blank">Thingful (IoT)</a></li></ul></div><div class="category-box"><h3>Análisis de Sitios Web y Scraping</h3><ul><li><a href="https://builtwith.com/" target="_blank">BuiltWith</a></li><li><a href="https://builtwith.com/login" target="_blank">BuiltWith Login</a></li><li><a href="https://whatcms.org/" target="_blank">WhatCMS</a></li><li><a href="https://www.similarweb.com/" target="_blank">SimilarWeb</a></li><li><a href="https://spyonweb.com/" target="_blank">SpyOnWeb</a></li><li><a href="http://www.visualsitemapper.com/" target="_blank">Visual Site Mapper</a></li><li><a href="https://import.io/" target="_blank">Import.io</a></li><li><a href="https://www.scrapestorm.com/" target="_blank">ScrapeStorm</a></li><li><a href="https://www.sken.io/" target="_blank">Sken.io (Monitoreo)</a></li></ul></div><div class="category-box"><h3>Proveedores de Hosting (Privacidad)</h3><ul><li><a href="https://www.1984hosting.com/" target="_blank">1984 Hosting</a></li><li><a href="https://www.systemli.org/en/index.html" target="_blank">Systemli</a></li><li><a href="https://evolution-host.com/" target="_blank">Evolution Host</a></li><li><a href="https://itldc.com/" target="_blank">ITLDC</a></li><li><a href="https://pq.hosting/en/" target="_blank">PQ Hosting</a></li><li><a href="https://openbsdhosting.com/web-hosting" target="_blank">OpenBSD Hosting</a></li><li><a href="https://www.vultr.com/servers/openbsd" target="_blank">Vultr (OpenBSD)</a></li><li><a href="https://www.arpnetworks.com/" target="_blank">ARP Networks</a></li></ul></div><div class="category-box"><h3>Archivos y Caché</h3><ul><li><a href="https://web.archive.org/" target="_blank">Wayback Machine</a></li><li><a href="https://archive.is/" target="_blank">Archive.is</a></li><li><a href="https://commoncrawl.org/" target="_blank">Common Crawl</a></li><li><a href="https://www.nerdydata.com/" target="_blank">NerdyData</a></li></ul></div></div>
+    </section>
+
+    <section class="main-section">
+        <h2>🗺️ Geolocalización y Mapas (GEOINT)</h2>
+        <div class="container"><div class="category-box"><h3>Mapas y Vistas Satelitales</h3><ul><li><a href="https://www.google.com/earth/" target="_blank">Google Earth</a></li><li><a href="https://www.bing.com/maps" target="_blank">Bing Maps</a></li><li><a href="https://www.openstreetmap.org/" target="_blank">OpenStreetMap</a></li><li><a href="https://zoom.earth/" target="_blank">Zoom Earth</a></li><li><a href="https://livingatlas.arcgis.com/en/home/" target="_blank">ArcGIS Living Atlas</a></li><li><a href="http://mashedworld.com/" target="_blank">Mashed World</a></li><li><a href="https://www.mapillary.com/" target="_blank">Mapillary (Street-level)</a></li></ul></div><div class="category-box"><h3>Infraestructura Celular y WiFi</h3>
+                <ul>
+                    <li><a href="https://www.cellmapper.net/map" target="_blank">CellMapper (Torres Celulares)</a></li>
+                    <li><a href="http://www.cellreception.com/" target="_blank">CellReception (Señal Celular)</a></li>
+                    <li><a href="http://www.antennasearch.com/default.asp" target="_blank">AntennaSearch</a></li>
+                    <li><a href="https://www.opensignal.com/" target="_blank">Opensignal (Análisis Móvil)</a></li>
+                    <li><a href="https://wigle.net/" target="_blank">WiGLE (Mapas de WiFi)</a></li>
+                    <li><a href="https://find-wifi.mylnikov.org/" target="_blank">Find Wi-Fi (Mylnikov)</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Cámaras, Vehículos y Clima</h3>
+                <ul>
+                    <li><a href="https://www.insecam.org/en/" target="_blank">Insecam (Cámaras IP)</a></li>
+                    <li><a href="https://www.flightradar24.com/" target="_blank">Flightradar24 (Vuelos)</a></li>
+                    <li><a href="https://www.marinetraffic.com/" target="_blank">MarineTraffic (Barcos)</a></li>
+                    <li><a href="http://platesmania.com/" target="_blank">Platesmania (Matrículas)</a></li>
+                     <li><a href="http://www.worldlicenseplates.com/" target="_blank">World License Plates</a></li>
+                    <li><a href="https://suncalc.org/" target="_blank">SunCalc (Posición del sol)</a></li>
+                    <li><a href="https://www.windy.com/" target="_blank">Windy (Clima)</a></li>
+                    <li><a href="https://usa.liveuamap.com/" target="_blank">Live Universal Awareness Map</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Vigilancia y Datos Geoespecíficos</h3>
+                <ul>
+                    <li><a href="https://atlasofsurveillance.org/" target="_blank">Atlas of Surveillance</a></li>
+                    <li><a href="https://www.digitalattackmap.com/" target="_blank">Digital Attack Map</a></li>
+                    <li><a href="https://liveipmap.com/" target="_blank">Live IP Map</a></li>
+                    <li><a href="https://ipstack.com/" target="_blank">IP Stack</a></li>
+                    <li><a href="https://forensic-architecture.org/" target="_blank">Forensic Architecture</a></li>
+                    <li><a href="https://intelliearth.harrisgeospatial.com/" target="_blank">Intelliearth</a></li>
+                    <li><a href="https://ipinfo.io/map" target="_blank">IPinfo Map</a></li>
+                </ul>
+            </div></div>
+    </section>
+    
+    <section class="main-section"><h2>🖼️ Búsqueda y Análisis de Imágenes (IMINT)</h2><div class="container"><div class="category-box"><h3>Búsqueda Inversa de Imágenes</h3><ul><li><a href="https://images.google.com/" target="_blank">Google Images</a></li><li><a href="https://yandex.com/images/" target="_blank">Yandex Images</a></li><li><a href="https://tineye.com/" target="_blank">TinEye</a></li><li><a href="https://pimeyes.com/en" target="_blank">PimEyes (Reconocimiento facial)</a></li><li><a href="https://searchbyimage.app/" target="_blank">Search By Image App</a></li></ul></div><div class="category-box"><h3>Análisis Forense y Metadatos (EXIF)</h3><ul><li><a href="http://fotoforensics.com/" target="_blank">FotoForensics</a></li><li><a href="https://exifcleaner.com/" target="_blank">ExifCleaner</a></li><li><a href="https://github.com/szTheory/exifcleaner" target="_blank">ExifCleaner (GitHub)</a></li><li><a href="https://0xacab.org/jvoisin/mat2" target="_blank">MAT2 (Metadata Anonymisation)</a></li><li><a href="https://0xacab.org/jvoisin/mat2-web" target="_blank">MAT2 (Web)</a></li><li><a href="https://gitlab.com/rmnvgr/metadata-cleaner" target="_blank">Metadata Cleaner (GitLab)</a></li><li><a href="https://29a.ch/photo-forensics/" target="_blank">Photo Forensics</a></li><li><a href="https://citizenevidence.amnestyusa.org/" target="_blank">Amnesty Evidence Lab (Metadata)</a></li></ul></div><div class="category-box"><h3>Herramientas de Imagen</h3><ul><li><a href="https://generated.photos/" target="_blank">Generated Photos (Caras AI)</a></li><li><a href="https://hidefaces.app/" target="_blank">Hide Faces (Difuminar caras)</a></li><li><a href="https://imgops.com/" target="_blank">ImgOps (Multi-herramienta)</a></li></ul></div></div></section>
+    
+    <section class="main-section">
+        <h2>🛡️ Ciberseguridad e Inteligencia de Amenazas</h2>
+        <div class="container"><div class="category-box"><h3>Inteligencia de Amenazas (Threat Intel)</h3>
+                <ul>
+                    <li><a href="https://id.recordedfuture.com/login" target="_blank">Recorded Future</a></li>
+                    <li><a href="https://community.riskiq.com/login" target="_blank">RiskIQ Community</a></li>
+                    <li><a href="https://exchange.xforce.ibmcloud.com/" target="_blank">IBM X-Force Exchange</a></li>
+                    <li><a href="https://otx.alienvault.com/dashboard/new" target="_blank">OTX AlienVault</a></li>
+                    <li><a href="https://pulsedive.com/" target="_blank">Pulsedive</a></li>
+                    <li><a href="https://viz.greynoise.io/" target="_blank">GreyNoise</a></li>
+                    <li><a href="https://maltiverse.com/search" target="_blank">Maltiverse</a></li>
+                    <li><a href="https://opentip.kaspersky.com/" target="_blank">Kaspersky TIP</a></li>
+                    <li><a href="https://app.threatconnect.com/auth/index.xhtml#/" target="_blank">ThreatConnect</a></li>
+                    <li><a href="https://rescure.me/feeds.html" target="_blank">RESCURE Feeds</a></li>
+                    <li><a href="https://strikesource.com/" target="_blank">StrikeSource</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Reputación y Anti-Abuso</h3>
+                <ul>
+                    <li><a href="https://www.abuseipdb.com/" target="_blank">AbuseIPDB</a></li>
+                    <li><a href="https://www.phishtank.com/index.php" target="_blank">PhishTank</a></li>
+                    <li><a href="https://phishstats.info/" target="_blank">PhishStats</a></li>
+                    <li><a href="https://botscout.com/" target="_blank">BotScout</a></li>
+                    <li><a href="https://spur.us/app/auth/sign-in" target="_blank">Spur</a></li>
+                    <li><a href="https://www.anti-hacker-alliance.com/" target="_blank">Anti Hacker Alliance</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Análisis de Malware y Archivos</h3>
+                <ul>
+                    <li><a href="https://www.virustotal.com/gui/" target="_blank">VirusTotal</a></li>
+                    <li><a href="https://www.virustotal.com/gui/sign-in" target="_blank">VirusTotal Login</a></li>
+                    <li><a href="https://app.any.run/" target="_blank">Any.Run (Sandbox)</a></li>
+                    <li><a href="https://www.hybrid-analysis.com/" target="_blank">Hybrid Analysis (Sandbox)</a></li>
+                    <li><a href="https://analyze.intezer.com/" target="_blank">Intezer Analyze</a></li>
+                    <li><a href="https://metadefender.opswat.com/" target="_blank">MetaDefender</a></li>
+                    <li><a href="https://malwareconfig.com/" target="_blank">MalwareConfig</a></li>
+                    <li><a href="https://koodous.com/" target="_blank">Koodous (Android Malware)</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Vulnerabilidades y Exploits</h3>
+                <ul>
+                    <li><a href="https://www.exploit-db.com/" target="_blank">Exploit-DB</a></li>
+                    <li><a href="https://attackerkb.com/" target="_blank">AttackerKB</a></li>
+                    <li><a href="https://vuldb.com/" target="_blank">VulDB</a></li>
+                    <li><a href="https://www.opencve.io/welcome" target="_blank">OpenCVE</a></li>
+                    <li><a href="https://cxsecurity.com/" target="_blank">CXSecurity</a></li>
+                    <li><a href="https://attackevals.mitre-engenuity.org/" target="_blank">MITRE ATT&CK Evaluations</a></li>
+                     <li><a href="https://www.exploitalert.com/" target="_blank">Exploit Alert</a></li>
+                    <li><a href="https://portal.underattack.today/" target="_blank">UnderAttack</a></li>
+                    <li><a href="https://www.codexgigassys.com/#/" target="_blank">CodexGigasSys</a></li>
+                    <li><a href="https://www.zero-day.cz/" target="_blank">Zero-Day.cz</a></li>
+                    <li><a href="https://www.ransomwatch.org/" target="_blank">RansomWatch</a></li>
+                </ul>
+            </div></div>
+    </section>
+    
+    <section class="main-section"><h2>📦 Fugas de Datos y Darknet</h2>
+        <div class="container"><div class="category-box"><h3>Buscadores de Fugas (Leaks)</h3>
+                <ul>
+                    <li><a href="https://haveibeenpwned.com/" target="_blank">Have I Been Pwned</a></li>
+                    <li><a href="https://dehashed.com/" target="_blank">Dehashed</a></li>
+                    <li><a href="https://leak-lookup.com/" target="_blank">Leak-Lookup</a></li>
+                    <li><a href="https://intelx.io/" target="_blank">IntelX.io</a></li>
+                    <li><a href="https://scylla.sh/" target="_blank">Scylla</a></li>
+                    <li><a href="https://psbdmp.ws/" target="_blank">Psbdmp (Pastebin)</a></li>
+                    <li><a href="https://buckets.grayhatwarfare.com/" target="_blank">GrayhatWarfare (Public Buckets)</a></li>
+                    <li><a href="https://leakix.net/" target="_blank">LeakIX</a></li>
+                    <li><a href="https://leakcheck.net/" target="_blank">LeakCheck</a></li>
+                    <li><a href="https://leakpeek.com/" target="_blank">LeakPeek</a></li>
+                    <li><a href="https://amibreached.com/" target="_blank">Am I Breached?</a></li>
+                    <li><a href="https://www.leaks.sh/" target="_blank">Leaks.sh</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Recursos de Fugas y Medios</h3>
+                <ul>
+                    <li><a href="https://offshoreleaks.icij.org/" target="_blank">Offshore Leaks Database</a></li>
+                    <li><a href="https://www.wikileaks.org/" target="_blank">WikiLeaks</a></li>
+                    <li><a href="https://file.wikileaks.org/file/" target="_blank">WikiLeaks Files</a></li>
+                    <li><a href="https://hunter.ddosecrets.com/" target="_blank">Distributed Denial of Secrets</a></li>
+                    <li><a href="https://www.liveleak.com/" target="_blank">LiveLeak</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Darknet y Tor</h3>
+                <ul>
+                    <li><a href="https://darksearch.io/" target="_blank">DarkSearch</a></li>
+                    <li><a href="https://metrics.torproject.org/exonerator.html" target="_blank">Tor Exonerator</a></li>
+                    <li><a href="https://iaca-darkweb-tools.com/" target="_blank">IACA Dark Web Tools</a></li>
+                    <li><a href="https://darktracer.io/" target="_blank">DarkTracer</a></li>
+                    <li><a href="https://onion.live/" target="_blank">Onion.live</a></li>
+                    <li><a href="http://www.dargle.net/" target="_blank">Dargle</a></li>
+                    <li><a href="https://github.com/s-rah/onionscan" target="_blank">OnionScan (GitHub)</a></li>
+                    <li><a href="https://github.com/megadose/OnionSearch" target="_blank">OnionSearch (GitHub)</a></li>
+                </ul>
+            </div></div>
+    </section>
+    
+    <section class="main-section">
+        <h2>🛠️ Herramientas y Utilidades Generales</h2>
+        <div class="container"><div class="category-box"><h3>Herramientas OSINT</h3><ul><li><a href="https://github.com/OWASP/Amass" target="_blank">OWASP Amass</a></li><li><a href="https://github.com/laramies/theHarvester" target="_blank">theHarvester</a></li><li><a href="https://www.maltego.com/" target="_blank">Maltego</a></li><li><a href="https://github.com/SpiderFoot/spiderfoot" target="_blank">SpiderFoot</a></li><li><a href="https://sf-f7460a9.hx.spiderfoot.net/" target="_blank">SpiderFoot HX</a></li><li><a href="https://github.com/intelowlproject/IntelOwl" target="_blank">IntelOwl</a></li></ul></div><div class="category-box"><h3>Utilidades y Editores</h3>
+                <ul>
+                    <li><a href="https://www.protectedtext.com/" target="_blank">ProtectedText (Notas cifradas)</a></li>
+                    <li><a href="https://privatebin.info/" target="_blank">PrivateBin (Pastebin cifrado)</a></li>
+                    <li><a href="https://joplinapp.org/" target="_blank">Joplin (Notas)</a></li>
+                    <li><a href="https://obsidian.md/" target="_blank">Obsidian (Notas)</a></li>
+                    <li><a href="https://wereturtle.github.io/ghostwriter/" target="_blank">Ghostwriter (Editor)</a></li>
+                    <li><a href="https://www.cyberchef.uk/" target="_blank">CyberChef</a></li>
+                    <li><a href="https://etherpad.org/" target="_blank">Etherpad</a></li>
+                    <li><a href="https://privatlab.com/" target="_blank">PrivatLab</a></li>
+                    <li><a href="https://requestbin.net/" target="_blank">RequestBin</a></li>
+                    <li><a href="https://pad.riseup.net/p/archlinuxinstall-keep" target="_blank">Riseup Pad (Ejemplo 1)</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Sistemas Operativos y Entornos</h3>
+                <ul>
+                    <li><a href="https://www.whonix.org/wiki/Main_Page" target="_blank">Whonix OS</a></li>
+                    <li><a href="https://tails.boum.org/" target="_blank">Tails OS</a></li>
+                    <li><a href="https://www.kali.org/" target="_blank">Kali Linux</a></li>
+                    <li><a href="https://www.sabayon.org/" target="_blank">Sabayon Linux</a></li>
+                    <li><a href="https://tsurugi-linux.org/" target="_blank">Tsurugi Linux</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Seguridad y OPSEC</h3>
+                <ul>
+                    <li><a href="https://satoshivpn.com/" target="_blank">SatoshiVPN</a></li>
+                    <li><a href="https://www.comparitech.com/vpn/vpn-logging-policies/#M" target="_blank">VPN Logging Policies</a></li>
+                    <li><a href="https://cirt.net/passwords" target="_blank">Default Passwords (CIRT.net)</a></li>
+                    <li><a href="https://www.huque.com/bin/gen_tlsa" target="_blank">Generate DANE TLSA Record</a></li>
+                    <li><a href="https://what2log.com/" target="_blank">What2Log</a></li>
+                    <li><a href="https://www.privacyshield.gov/welcome" target="_blank">Privacy Shield Framework</a></li>
+                </ul>
+            </div></div>
+    </section>
+
+    <section class="main-section"><h2>🔬 Research Tools</h2><div class="container"><div class="category-box"><h3>Análisis y Automatización</h3><ul><li><a href="https://github.com/intelowlproject/IntelOwl" title="GitHub - intelowlproject/IntelOwl" target="_blank">IntelOwl</a></li><li><a href="https://github.com/intelowlproject/IntelOwl-ng" title="intelowlproject/IntelOwl-ng" target="_blank">IntelOwl-ng</a></li><li><a href="https://www.tines.io/" title="Tines | Security Automation" target="_blank">Tines</a></li><li><a href="https://www.knime.com/" title="KNIME | Open for Innovation" target="_blank">KNIME</a></li><li><a href="https://www.onyphe.io/" title="ONYPHE - Your Internet SIEM" target="_blank">ONYPHE</a></li><li><a href="https://www.opencti.io/en/" title="OpenCTI - Cyber Threat Intelligence" target="_blank">OpenCTI</a></li><li><a href="https://graphsense.info/" title="Home | Graphsense" target="_blank">Graphsense</a></li><li><a href="https://phantombuster.com/" title="Phantombuster | Automate everything" target="_blank">Phantombuster</a></li><li><a href="https://github.com/yogeshojha/rengine" title="GitHub - yogeshojha/rengine" target="_blank">reNgine</a></li><li><a href="https://networkx.org/" title="NetworkX documentation" target="_blank">NetworkX</a></li><li><a href="https://metron.apache.org/" target="_blank">Apache Metron</a></li></ul></div><div class="category-box"><h3>Utilidades de Ciberseguridad</h3><ul><li><a href="http://icyberchef.com/" title="CyberChef" target="_blank">CyberChef</a></li><li><a href="https://metadefender.opswat.com/" title="MetaDefender Cloud | Homepage" target="_blank">MetaDefender Cloud</a></li><li><a href="https://unshorten.it/" title="Unshorten.It" target="_blank">Unshorten.It</a></li><li><a href="https://download.botsight.nlok-research.me/" title="Install BotSight" target="_blank">BotSight</a></li><li><a href="https://whatcms.org/" title="What CMS?" target="_blank">What CMS?</a></li><li><a href="https://www.projecthoneypot.org/home.php" title="Project Honey Pot" target="_blank">Project Honey Pot</a></li><li><a href="https://explainshell.com/" title="explainshell.com" target="_blank">Explain Shell</a></li><li><a href="http://www.dest-unreach.org/socat/" title="socat" target="_blank">socat</a></li><li><a href="https://packetsender.com/" title="Packet Sender" target="_blank">Packet Sender</a></li><li><a href="https://www.pingcastle.com/" title="Home - PingCastle" target="_blank">PingCastle</a></li><li><a href="https://klode.tech/" target="_blank">KLODE.TECH</a></li><li><a href="https://hashes.org/" title="Hashes.org" target="_blank">Hashes.org</a></li><li><a href="https://crackstation.net/" target="_blank">CrackStation</a></li></ul></div><div class="category-box"><h3>Repositorios y Frameworks (GitHub)</h3><ul><li><a href="http://10degres.net/github-tools-collection/" title="GitHub tools collection · 10degres" target="_blank">10degres Collection</a></li><li><a href="https://github.com/ail-project/ail-framework" title="GitHub - ail-project/ail-framework" target="_blank">AIL Framework</a></li><li><a href="https://github.com/OWASP/Amass" title="GitHub - OWASP/Amass" target="_blank">OWASP Amass</a></li><li><a href="https://github.com/HowToFind-bot" title="HowToFind · GitHub" target="_blank">HowToFind</a></li><li><a href="https://github.com/fireeye/ThreatPursuit-VM" title="GitHub - fireeye/ThreatPursuit-VM" target="_blank">ThreatPursuit-VM</a></li><li><a href="https://github.com/jkctech/Telegram-Trilateration" title="GitHub - jkctech/Telegram-Trilateration" target="_blank">Telegram-Trilateration</a></li><li><a href="https://github.com/hhhrrrttt222111/Ethical-Hacking-Tools" title="GitHub - hhhrrrttt222111/Ethical-Hacking-Tools" target="_blank">Ethical-Hacking-Tools</a></li><li><a href="https://github.com/cyberark/kubesploit" title="GitHub - cyberark/kubesploit" target="_blank">Kubesploit</a></li><li><a href="https://github.com/adnane-X-tebbaa/GRecon" title="GitHub - adnane-X-tebbaa/GRecon" target="_blank">GRecon</a></li><li><a href="https://github.com/leoanggal1/P-SAK" title="GitHub - leoanggal1/P-SAK" target="_blank">P-SAK</a></li><li><a href="https://github.com/liamg/traitor" title="GitHub - liamg/traitor" target="_blank">Traitor</a></li></ul></div><div class="category-box"><h3>Entornos, Editores y OPSEC</h3><ul><li><a href="https://a8silo.com/" title="Silo" target="_blank">Silo</a></li><li><a href="https://www.whonix.org/wiki/Main_Page" title="Anonymous Operating System" target="_blank">Whonix</a></li><li><a href="https://isolation.site/" title="ISOlation.SITE" target="_blank">ISOlation.SITE</a></li><li><a href="https://gitpod.io/workspaces/" title="Workspaces - Gitpod" target="_blank">Gitpod</a></li><li><a href="https://wiki.js.org/" title="Wiki.js" target="_blank">Wiki.js</a></li><li><a href="https://www.protectedtext.com/" title="Online Notepad" target="_blank">ProtectedText</a></li><li><a href="https://obsidian.md/" title="Obsidian" target="_blank">Obsidian</a></li><li><a href="https://zettlr.com/" title="A Markdown Editor" target="_blank">Zettlr</a></li><li><a href="https://writefreely.org/" title="WriteFreely" target="_blank">WriteFreely</a></li><li><a href="https://www.resilio.com/individuals/" title="Resilio Sync" target="_blank">Resilio Sync</a></li><li><a href="https://kennbroorg.gitlab.io/ikyweb/" title="iKy" target="_blank">iKy</a></li><li><a href="https://tools.kali.org/tools-listing" title="Kali Linux Tools Listing" target="_blank">Kali Linux Tools</a></li></ul></div></div></section>
+    
+    <section class="main-section">
+        <h2>🧪 Entornos de Práctica y Aprendizaje Interactivo</h2>
+        <div class="container"><div class="category-box"><h3>Laboratorios y Plataformas de Hacking</h3><ul><li><a href="https://tryhackme.com/" target="_blank">TryHackMe</a></li><li><a href="https://www.getblackbird.net/" target="_blank">Blackbird</a></li><li><a href="https://www.katacoda.com/" target="_blank">Katacoda (Escenarios Interactivos)</a></li><li><a href="https://minikube.sigs.k8s.io/docs/" target="_blank">Minikube (Kubernetes Local)</a></li><li><a href="https://ctf.cybersoc.wales/" target="_blank">Cyber Detective CTF</a></li></ul></div></div>
+    </section>
+    
+    <section class="main-section">
+        <h2>📖 Recursos de Aprendizaje y Artículos</h2>
+        <div class="container"><div class="category-box"><h3>Bibliotecas, Guías y Handbooks</h3>
+                <ul>
+                    <li><a href="https://rentry.co/InfoSec-Learning-Resources" target="_blank">InfoSec Learning Resources (Rentry)</a></li>
+                    <li><a href="https://www.sans.org/blog/-must-have-free-resources-for-open-source-intelligence-osint-/" target="_blank">SANS OSINT Resources</a></li>
+                    <li><a href="https://www.cjr.org/tow_center_reports/guide-to-osint-and-hostile-communities.php" target="_blank">CJR Guide to OSINT</a></li>
+                    <li><a href="https://verificationhandbook.com/" target="_blank">Verification Handbook</a></li>
+                    <li><a href="https://onlineharassmentfieldmanual.pen.org/" target="_blank">Online Harassment Field Manual</a></li>
+                    <li><a href="https://www.riskiq.com/threat-hunting-resources/" target="_blank">RiskIQ Threat Hunting Resources</a></li>
+                    <li><a href="https://disinfocloud.com/" target="_blank">Disinfo Cloud</a></li>
+                    <li><a href="https://www.readkong.com/page/osint-cheat-sheet-inteltechniques-com-3762848" target="_blank">IntelTechniques Cheat-Sheet</a></li>
+                    <li><a href="https://firstdraftnews.org/" target="_blank">First Draft News</a></li>
+                    <li><a href="https://skerritt.blog/how-does-tor-really-work/" target="_blank">How Tor Really Works (Blog)</a></li>
+                     <li><a href="https://cheatography.com/davechild/cheat-sheets/regular-expressions/" target="_blank">Regex Cheat Sheet</a></li>
+                    <li><a href="https://linuxconfig.org/install-tor-on-ubuntu-18-04-bionic-beaver-linux" target="_blank">Guía: Instalar Tor en Ubuntu</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Artículos, Blogs y Think Tanks</h3>
+                <ul>
+                    <li><a href="https://security.kiwi/" target="_blank">Security.kiwi</a></li>
+                    <li><a href="https://blog.passivetotal.org/surfacing-infrastructure-with-trackers/" target="_blank">Surfacing Infrastructure with Trackers</a></li>
+                    <li><a href="https://medium.com/week-in-osint/keeping-a-grip-on-googleids-506814ae098b" target="_blank">Keeping a Grip on GoogleIDs</a></li>
+                    <li><a href="https://subfn.net/2020/06/15/ga-osint-trick/" target="_blank">Neat OSINT trick: Google account disclosure</a></li>
+                    <li><a href="https://www.rattis.net/2020/03/16/building-an-osint-box-based-on-open-source-intelligence-techniques-7th-edition/" target="_blank">Building an OSINT Box</a></li>
+                    <li><a href="https://www.secjuice.com/finding-real-ips-of-origin-servers-behind-cloudflare-or-tor/" target="_blank">Finding IPs behind CloudFlare/Tor</a></li>
+                    <li><a href="http://www.covert.io/" target="_blank">Covert.io Security Blog</a></li>
+                    <li><a href="https://medium.com/@johnlatwc/the-githubification-of-infosec-afbdbfaad1d1" target="_blank">The Githubification of InfoSec</a></li>
+                    <li><a href="https://www.intelligencewithsteve.com/post/a-guide-to-searching-linkedin-by-email-address" target="_blank">Guide to searching LinkedIn by email</a></li>
+                    <li><a href="https://benjaminstrick.com/geospatial-awareness-how-to-add-data-to-google-earth/" target="_blank">Geospatial awareness with Google Earth</a></li>
+                    <li><a href="https://medium.com/dataseries/telegram-network-visualization-tracing-forwards-and-mentions-f75746712fcf" title="Telegram Network Visualization" target="_blank">Telegram Network Visualization</a></li>
+                    <li><a href="https://www.wbtsec.com/twitter-osint.html" title="Twitter Open Source Intelligence" target="_blank">Twitter OSINT Guide</a></li>
+                    <li><a href="https://rusi.org/" target="_blank">RUSI (Think Tank)</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Organizaciones y Derechos Digitales</h3>
+                <ul>
+                    <li><a href="https://www.accessnow.org/about-us/" target="_blank">Access Now</a></li>
+                    <li><a href="https://web.archive.org/web/20130527231420/http://www.wyldryde.org/commands/fantasy.php" target="_blank">WyldRyde IRC (Archivo)</a></li>
+                </ul>
+            </div></div>
+			<div class="category-box">
+                <h3>Cursos y Formación OSINT</h3>
+                <ul>
+                    <li><a href="https://register.automatingosint.com/" target="_blank">Automating OSINT</a></li>
+                    <li><a href="https://www.sans.org/course/open-source-intelligence-gathering" target="_blank">SANS OSINT Course</a></li>
+                    <li><a href="https://www.anti-crime-academy.com/osint-training" target="_blank">Anti-Crime Academy Training</a></li>
+                </ul>
+            </div>
+    </section>
+    
+    <section class="main-section">
+        <h2>🔒 Comunicación y Almacenamiento Seguro</h2>
+        <div class="container"><div class="category-box"><h3>Plataformas de Privacidad y Mensajería</h3>
+                <ul>
+                    <li><a href="https://element.io/" target="_blank">Element (Chat Seguro)</a></li>
+                    <li><a href="https://matrix.org/" target="_blank">Matrix.org (Protocolo)</a></li>
+                    <li><a href="https://app.wire.com/?hl=en" target="_blank">Wire (Chat Seguro)</a></li>
+                    <li><a href="https://briarproject.org/" target="_blank">Briar (Mensajería P2P)</a></li>
+                    <li><a href="https://mail.tutanota.com/" target="_blank">Tutanota (Email Seguro)</a></li>
+                    <li><a href="https://countermail.com/" target="_blank">CounterMail (Email Seguro)</a></li>
+                    <li><a href="https://www.geekshed.net/commands/chanserv/" target="_blank">GeekShed IRC Commands</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Alojamiento de Archivos Anónimo/Temporal</h3>
+                <ul>
+                    <li><a href="https://send.tresorit.com/" target="_blank">Tresorit Send</a></li>
+                    <li><a href="https://gofile.io/welcome" target="_blank">GoFile</a></li>
+                    <li><a href="https://internxt.com/" target="_blank">Internxt</a></li>
+                    <li><a href="https://www.filehosting.org/" target="_blank">FileHosting</a></li>
+                    <li><a href="https://www.filedropper.com/" target="_blank">FileDropper</a></li>
+                    <li><a href="https://depositfiles.com/" target="_blank">DepositFiles</a></li>
+                    <li><a href="https://zippyshare.com/" target="_blank">ZippyShare</a></li>
+                    <li><a href="https://www.4shared.com/" target="_blank">4shared</a></li>
+                    <li><a href="https://www.mediafire.com/" target="_blank">MediaFire</a></li>
+                    <li><a href="https://anonymousfiles.io/#" target="_blank">AnonymousFiles</a></li>
+                    <li><a href="https://www.sendspace.com/" target="_blank">Sendspace</a></li>
+                    <li><a href="https://wetransfer.com/" target="_blank">WeTransfer</a></li>
+                    <li><a href="https://www.file.io/" target="_blank">File.io</a></li>
+                    <li><a href="https://0bin.net/" target="_blank">0bin.net</a></li>
+                    <li><a href="https://ufile.io/" target="_blank">Ufile.io</a></li>
+                    <li><a href="https://figshare.com/account/home" target="_blank">Figshare</a></li>
+                    <li><a href="https://securedrop.org/" target="_blank">SecureDrop</a></li>
+                </ul>
+            </div><div class="category-box"><h3>Almacenamiento en la Nube</h3>
+                <ul>
+                    <li><a href="https://mega.nz/" target="_blank">MEGA (Cifrado)</a></li>
+                    <li><a href="https://app.box.com/" target="_blank">Box</a></li>
+                    <li><a href="https://cryptpad.fr/" target="_blank">CryptPad (Colaborativo Cifrado)</a></li>
+                </ul>
+            </div></div>
+    </section>
+    
+    <section class="main-section">
+        <h2>📂 Estudios de Casos e Investigaciones</h2>
+        <div class="container"><div class="category-box"><h3>Investigación sobre QAnon</h3>
+                <ul>
+                    <li><a href="https://www.dailydot.com/debug/who-is-qanon-jim-watkins-rumors/" target="_blank">The Daily Dot: ¿Quién es QAnon?</a></li>
+                    <li><a href="https://www.logically.ai/articles/qanon-key-figure-man-from-new-jersey" target="_blank">Logically: Figura Clave de QAnon</a></li>
+                    <li><a href="https://www.newsweek.com/who-jason-gelinas-qanon-website-goes-offline-after-new-jersey-operator-identified-1531453" target="_blank">Newsweek: Operador de NJ Identificado</a></li>
+                    <li><a href="https://qanon41020.wordpress.com/" target="_blank">Blog QAnon (Wordpress)</a></li>
+                    <li><a href="https://www.isdglobal.org/?s=qanon" target="_blank">ISD Global: Búsqueda QAnon</a></li>
+                    <li><a href="https://nypost.com/article/what-is-qanon-conspiracy-theory/" target="_blank">NY Post: ¿Qué es QAnon?</a></li>
+                    <li><a href="https://www.adl.org/qanon" target="_blank">ADL: QAnon</a></li>
+                    <li><a href="https://www.snopes.com/news/2020/08/21/qanon-2020-election/" target="_blank">Snopes: QAnon y las Elecciones 2020</a></li>
+                    <li><a href="https://abcnews.go.com/Politics/men-qanon/story?id=73046374" target="_blank">ABC News: Los Hombres Detrás de QAnon</a></li>
+                    <li><a href="https://www.pewresearch.org/fact-tank/2020/11/16/5-facts-about-the-qanon-conspiracy-theories/" target="_blank">Pew Research: 5 Hechos sobre QAnon</a></li>
+                    <li><a href="https://www.theguardian.com/us-news/2021/mar/20/revealed-man-behind-fast-growing-cult-becoming-the-new-qanon-sabmyk-network" target="_blank">The Guardian: El Hombre Detrás del Nuevo QAnon</a></li>
+                    <li><a href="https://theqpatriothub.weebly.com/" target="_blank">The Q Patriot Hub</a></li>
+                    <li><a href="https://fivethirtyeight.com/features/qanon-has-become-the-cult-that-cries-wolf/" target="_blank">FiveThirtyEight: QAnon, el Culto que Grita Lobo</a></li>
+                    <li><a href="https://www.theguardian.com/us-news/2020/aug/25/qanon-conspiracy-theory-explained-trump-what-is" target="_blank">The Guardian: Teoría QAnon Explicada</a></li>
+                    <li><a href="https://thepatriotvoice.us/" target="_blank">The Patriot Voice</a></li>
+                    <li><a href="https://www.forbes.com/sites/siladityaray/2020/10/19/qanon-conspiracy-forum-8kun-back-online-with-help-from-russian-internet-firm/?sh=69c231893e90" target="_blank">Forbes: 8kun Vuelve con Ayuda Rusa</a></li>
+                    <li><a href="https://www.salon.com/2021/03/25/qanon-and-the-trump-cult-expert-steven-hassan-on-whether-they-can-be-saved/" target="_blank">Salon: QAnon y el Culto a Trump</a></li>
+                    <li><a href="https://www.latimes.com/entertainment-arts/tv/story/2021-03-28/qanon-docuseries-hbo-who-is-q" target="_blank">LA Times: Documental de QAnon en HBO</a></li>
+                    <li><a href="https://www.forbes.com/sites/suzannerowankelleher/2021/03/25/qanon-conference-omni-dallas-hotel-memorial-day-weekend-michael-flynn-sidney-powell/?sh=1bbf6fef3778" target="_blank">Forbes: Conferencia de QAnon en Dallas</a></li>
+                    <li><a href="https://www.vice.com/en/topic/qanon" target="_blank">VICE: Tema QAnon</a></li>
+                    <li><a href="https://www.brookings.edu/techstream/how-to-respond-to-the-qanon-threat/" target="_blank">Brookings: Cómo Responder a la Amenaza QAnon</a></li>
+                    <li><a href="https://slate.com/technology/2020/09/qanon-identity-revealed-explained.html" target="_blank">Slate: Identidad de Q Revelada</a></li>
+                    <li><a href="https://www.salon.com/2020/08/16/what-is-qanon-a-not-so-brief-introduction-to-the-conspiracy-theory-thats-eating-america/" target="_blank">Salon: Introducción a QAnon</a></li>
+                    <li><a href="https://www.houstonpublicmedia.org/articles/shows/town-square/2021/03/22/394095/unpacking-qanon-how-do-we-understand-conspiracy-theories-and-their-impact/" target="_blank">Houston Public Media: Desempacando QAnon</a></li>
+                    <li><a href="https://folklife.si.edu/magazine/folkloric-roots-of-qanon-conspiracy" target="_blank">Folklife: Raíces Folclóricas de QAnon</a></li>
+                    <li><a href="https://www.reddit.com/r/QAnonCasualties/" target="_blank">Reddit: QAnon Casualties</a></li>
+                    <li><a href="https://www.upi.com/Top_News/Voices/2021/03/26/QAnon-followers-mental-illness/6201616759311/" target="_blank">UPI: Seguidores de QAnon y Salud Mental</a></li>
+                    <li><a href="https://newrepublic.com/article/159529/qanon-blood-libel-satanic-panic" target="_blank">New Republic: QAnon y Pánico Satánico</a></li>
+                    <li><a href="https://www.poynter.org/reporting-editing/2021/embedded-within-a-mass-delusion-the-challenge-of-reporting-on-qanon/" target="_blank">Poynter: El Reto de Reportar sobre QAnon</a></li>
+                    <li><a href="https://cyber.harvard.edu/story/2021-02/tracking-qanon-how-trump-turned-conspiracy-theory-research-upside-down" target="_blank">Harvard Cyber: Rastreando a QAnon</a></li>
+                    <li><a href="https://www.centraltrack.com/oh-shit-a-qanon-con-is-coming-to-dallas/" target="_blank">Central Track: Conferencia de QAnon en Dallas</a></li>
+                    <li><a href="https://www.usnews.com/news/top-news/articles/2020-08-24/small-but-growing-russian-support-for-qanon-conspiracies-seen-online" target="_blank">US News: Apoyo Ruso a QAnon</a></li>
+                    <li><a href="https://www.rollingstone.com/culture/culture-news/qanon-telegram-channels-increase-1117869/" target="_blank">Rolling Stone: Canales de QAnon en Telegram</a></li>
+                    <li><a href="https://www.mediamatters.org/qanon-conspiracy-theory" target="_blank">Media Matters: Teoría de la Conspiración QAnon</a></li>
+                    <li><a href="http://www.orphanalytics.com/en/news/pressrelease20201215" target="_blank">OrphAnalytics: Investigación sobre Q</a></li>
+                    <li><a href="https://www.bellingcat.com/news/americas/2021/01/07/the-making-of-qanon-a-crowdsourced-conspiracy/" target="_blank">Bellingcat: La Creación de QAnon</a></li>
+                    <li><a href="https://www.bellingcat.com/news/americas/2021/01/29/the-qanon-timeline/" target="_blank">Bellingcat: La Línea de Tiempo de QAnon</a></li>
+                    <li><a href="https://www.vice.com/en/article/88azmv/why-qanon-followers-are-suddenly-saying-theres-no-such-thing-as-qanon" target="_blank">VICE: ¿Por qué los seguidores de Q niegan Q?</a></li>
+                    <li><a href="https://www.logically.ai/search-results?term=qanon&type=BLOG_POST&groupId=2_blank">Logically: Búsqueda sobre QAnon</a></li>
+                    <li><a href="https://www.timesofisrael.com/swiss-sleuths-use-text-analysis-to-track-down-the-identity-of-q-behind-qanon/" target="_blank">Times of Israel: Detectives Suizos sobre la Identidad de Q</a></li>
+                </ul>
+            </div><div class="category-box">
+                <h3>Vigilancia, Policía y Derechos Civiles</h3>
+                <ul>
+                    <li><a href="https://www.thedailybeast.com/how-the-far-right-made-me-the-false-face-of-the-dc-insurrection" target="_blank">The Daily Beast: Falsa Cara de la Insurrección</a></li>
+                    <li><a href="https://www.freeburmarangers.org/" target="_blank">Free Burma Rangers</a></li>
+                    <li><a href="https://newblood.anonops.com/h2sao.html" target="_blank">New Blood Anonops</a></li>
+                    <li><a href="https://www.policedap.org/" target="_blank">Police Data Accessibility Project</a></li>
+                    <li><a href="https://www.washingtonpost.com/graphics/investigations/police-shootings-database/" target="_blank">Washington Post: Base de Datos de Tiroteos</a></li>
+                    <li><a href="https://mappingpoliceviolence.org/" target="_blank">Mapping Police Violence</a></li>
+                    <li><a href="https://copcrisis.com/" target="_blank">Cop Crisis</a></li>
+                    <li><a href="https://blmprotests.forensic-architecture.org/" target="_blank">Forensic Architecture: Protestas BLM</a></li>
+                    <li><a href="https://www.bgsu.edu/health-and-human-services/programs/department-of-human-services/criminal-justice/police-integrity-lost.html" target="_blank">BGSU: Integridad Policial Perdida</a></li>
+                    <li><a href="https://www.protectedtext.com/belarus2" target="_blank">ProtectedText: Belarus2</a></li>
+                </ul>
+            </div></div>
+    </section>
+
+   <script src="script.js"></script>
+</body>
+</html>
